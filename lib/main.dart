@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'home_page.dart';
+
 void main() {
-  runApp(MyApp());
+  Future.delayed(Duration(seconds: 3), () {
+    runApp(MyApp());
+  });
 }
 
 class MyApp extends StatelessWidget {
