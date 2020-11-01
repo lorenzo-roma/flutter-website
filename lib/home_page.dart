@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/animation.dart';
+import 'package:flutter_website/sections/currently.dart';
+import 'package:flutter_website/sections/name_description.dart';
+import 'package:flutter_website/sections/projects.dart';
 import 'package:flutter_website/widgets/custom_slider.dart';
 import 'package:flutter_website/widgets/carousel_section.dart';
 
@@ -16,7 +19,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   void initState() {
     super.initState();
     _animationController = AnimationController(
-        duration: const Duration(milliseconds: 300), vsync: this);
+        duration: const Duration(milliseconds: 1000), vsync: this);
     animation =
         CurvedAnimation(parent: _animationController, curve: Curves.easeIn);
     _animationController.forward();
@@ -26,10 +29,19 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     return FadeTransition(
       opacity: animation,
-      child: Center(
-          child: CustomSlider(
-        slides: const [CarouselSection(), CarouselSection(), CarouselSection()],
-      )),
+      child: Container(
+        height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
+        color: Colors.black,
+        child: Center(
+            child: CustomSlider(
+          slides: const [
+            CarouselSection(child: SectionNameDescription()),
+            CarouselSection(child: SectionCurrently()),
+            CarouselSection(child: SectionProjects())
+          ],
+        )),
+      ),
     );
   }
 }

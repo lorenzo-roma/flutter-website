@@ -21,7 +21,7 @@ class CustomSlider extends StatelessWidget {
         child: CarouselSlider(
           carouselController: _carouselController,
           options: CarouselOptions(
-            scrollPhysics: BouncingScrollPhysics(),
+            viewportFraction: 0.7,
             enableInfiniteScroll: false,
             aspectRatio: _getAspectRatio(context),
             enlargeCenterPage: true,
