@@ -8,10 +8,9 @@ class SectionCurrently extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Padding(
-            padding: const EdgeInsets.only(bottom: 32.0),
+            padding: const EdgeInsets.only(top: 32, bottom: 48.0),
             child: FittedBox(
               fit: BoxFit.cover,
               child: TypeWriterText(

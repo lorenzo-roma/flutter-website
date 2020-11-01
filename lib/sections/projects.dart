@@ -12,11 +12,17 @@ class SectionProjects extends StatelessWidget {
       padding: const EdgeInsets.only(top: 16.0),
       child: Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.only(bottom: 8.0),
-            child: TypeWriterText(
-              text: ["Some of my projects", "I even added their video on YT!"],
-              style: Theme.of(context).textTheme.headline2,
+          FittedBox(
+            fit: BoxFit.cover,
+            child: Padding(
+              padding: const EdgeInsets.only(bottom: 8.0),
+              child: TypeWriterText(
+                text: [
+                  "Some of my projects",
+                  "I even added their video on YT!"
+                ],
+                style: Theme.of(context).textTheme.headline2,
+              ),
             ),
           ),
           Expanded(

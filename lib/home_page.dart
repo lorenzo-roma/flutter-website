@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/animation.dart';
 import 'package:flutter_website/sections/currently.dart';
@@ -25,6 +27,12 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     _animationController.forward();
   }
 
+  double _getGlobalPadding(BuildContext context) {
+    final w = MediaQuery.of(context).size.width;
+    final padding = pow(w / 100, 4) / 200;
+    return padding > 300 ? 300 : padding;
+  }
+
   @override
   Widget build(BuildContext context) {
     return FadeTransition(
@@ -33,14 +41,17 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
         color: Colors.black,
-        child: Center(
-            child: CustomSlider(
-          slides: const [
-            CarouselSection(child: SectionNameDescription()),
-            CarouselSection(child: SectionCurrently()),
-            CarouselSection(child: SectionProjects())
-          ],
-        )),
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: _getGlobalPadding(context)),
+          child: Center(
+              child: CustomSlider(
+            slides: const [
+              CarouselSection(child: SectionNameDescription()),
+              CarouselSection(child: SectionCurrently()),
+              CarouselSection(child: SectionProjects())
+            ],
+          )),
+        ),
       ),
     );
   }
