@@ -35,14 +35,15 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return FadeTransition(
-      opacity: animation,
-      child: Container(
-        height: MediaQuery.of(context).size.height,
-        width: MediaQuery.of(context).size.width,
-        color: Colors.black,
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: _getGlobalPadding(context)),
+    return Padding(
+      padding: EdgeInsets.symmetric(
+          horizontal: _getGlobalPadding(context), vertical: 0),
+      child: FadeTransition(
+        opacity: animation,
+        child: Container(
+          height: MediaQuery.of(context).size.height,
+          width: MediaQuery.of(context).size.width,
+          color: Colors.black,
           child: Center(
               child: CustomSlider(
             slides: const [

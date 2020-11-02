@@ -11,6 +11,16 @@ class SectionNameDescription extends StatelessWidget {
     return _getWindowWidth(context) < 750;
   }
 
+  bool _isLargeLayout(BuildContext context) {
+    return _getWindowWidth(context) > 1400;
+  }
+
+  double _getSpreadRadius(BuildContext context) {
+    if (_isMobileLayout(context)) return -45;
+    if (_isLargeLayout(context)) return -30;
+    return -50;
+  }
+
   List<Widget> _getFlexChildren(BuildContext context) {
     return [
       Expanded(
@@ -24,7 +34,9 @@ class SectionNameDescription extends StatelessWidget {
                 fit: BoxFit.cover,
                 child: Text(
                   "Lorenzo\nRomagnoni",
-                  textAlign: TextAlign.center,
+                  textAlign: _isMobileLayout(context)
+                      ? TextAlign.center
+                      : TextAlign.left,
                   style: Theme.of(context).textTheme.headline1,
                 ),
               ),
@@ -44,18 +56,26 @@ class SectionNameDescription extends StatelessWidget {
       ),
       Expanded(
         flex: 2,
-        child: Center(
-          child: Align(
-            alignment: Alignment.center,
-            child: Padding(
-              padding: const EdgeInsets.only(left: 12, top: 16.0),
-              child: FittedBox(
-                fit: BoxFit.cover,
-                child: Text(
-                  "Lorem ipsum dolor sit amet, consectetur\nadipiscing elit. Nulla sed neque rutrum,\n pretium nisl eget, gravida neque.\n Aliquam in dignissim quam, at ultricies\n tellus. Nulla sed lectus iaculis, aliquam \nneque a, blandit nibh. Aliquam varius \norci id ligula rhoncus semper. Vivamus \n,nec lectus vitae dui dapibus cursus eget\n sed mauris. Orci varius natoque\n penatibus et magnis dis parturient \nmontes, nascetur ridiculus mus. Sed id \nerat lectus. Aenean ornare metus diam. \nPellentesque eu odio volutpat, vulputate\n velit nec, malesuada lorem.",
-                  style: Theme.of(context).textTheme.bodyText1,
-                  textAlign: TextAlign.center,
-                  overflow: TextOverflow.fade,
+        child: Container(
+          decoration: BoxDecoration(color: Colors.black, boxShadow: [
+            BoxShadow(
+                color: Theme.of(context).accentColor,
+                blurRadius: 50,
+                spreadRadius: _getSpreadRadius(context)),
+          ]),
+          child: Center(
+            child: Align(
+              alignment: Alignment.center,
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: FittedBox(
+                  fit: BoxFit.cover,
+                  child: Text(
+                    "Lorem ipsum dolor sit amet, consectetur\nadipiscing elit. Nulla sed neque rutrum,\n pretium nisl eget, gravida neque.\n Aliquam in dignissim quam, at ultricies\n tellus. Nulla sed lectus iaculis, aliquam \nneque a, blandit nibh. Aliquam varius \norci id ligula rhoncus semper. Vivamus \n,nec lectus vitae dui dapibus cursus eget\n sed mauris. Orci varius natoque\n penatibus et magnis dis parturient \nmontes, nascetur ridiculus mus. Sed id \nerat lectus. Aenean ornare metus diam. \nPellentesque eu odio volutpat, vulputate\n velit nec, malesuada lorem.",
+                    style: Theme.of(context).textTheme.bodyText1,
+                    textAlign: TextAlign.center,
+                    overflow: TextOverflow.fade,
+                  ),
                 ),
               ),
             ),

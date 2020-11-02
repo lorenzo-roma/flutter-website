@@ -8,9 +8,10 @@ class SectionCurrently extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Padding(
-            padding: const EdgeInsets.only(top: 32, bottom: 48.0),
+            padding: const EdgeInsets.only(bottom: 32.0),
             child: FittedBox(
               fit: BoxFit.cover,
               child: TypeWriterText(
@@ -26,14 +27,16 @@ class SectionCurrently extends StatelessWidget {
           FittedBox(
             fit: BoxFit.cover,
             child: Stack(
+              clipBehavior: Clip.none,
               children: [
-                Padding(
-                  padding: const EdgeInsets.only(left: 32.0),
+                Positioned(
+                  left: 32,
+                  top: -10,
                   child: Container(
                     constraints: BoxConstraints(maxHeight: 80),
                     child: Opacity(
-                      opacity: 0.35,
-                      child: Image.asset('images/polimi_logo.png'),
+                      opacity: 0.4,
+                      child: Image.asset('assets/images/polimi_logo.png'),
                     ),
                   ),
                 ),
@@ -54,14 +57,15 @@ class SectionCurrently extends StatelessWidget {
           ),
           FittedBox(
             fit: BoxFit.cover,
-            child: Stack(children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 32.0),
+            child: Stack(clipBehavior: Clip.none, children: [
+              Positioned(
+                top: -10,
+                left: 32,
                 child: Container(
                   constraints: BoxConstraints(maxHeight: 80),
                   child: Opacity(
-                    opacity: 0.35,
-                    child: Image.asset('images/tutored_logo.png'),
+                    opacity: 0.4,
+                    child: Image.asset('assets/images/tutored_logo.png'),
                   ),
                 ),
               ),

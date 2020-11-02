@@ -8,9 +8,8 @@ class CustomSlider extends StatelessWidget {
   final CarouselController _carouselController = CarouselController();
   CustomSlider({@required List<Widget> slides}) : this._slides = slides;
 
-  double _getAspectRatio(BuildContext context) {
-    return MediaQuery.of(context).size.width /
-        MediaQuery.of(context).size.height;
+  double _getAspectRatio(BoxConstraints constraints) {
+    return constraints.maxWidth / constraints.maxHeight;
   }
 
   @override
@@ -18,17 +17,19 @@ class CustomSlider extends StatelessWidget {
     return Listener(
       onPointerSignal: _handlePointerSignal,
       child: _IgnorePointerSignal(
-        child: CarouselSlider(
-          carouselController: _carouselController,
-          options: CarouselOptions(
-            viewportFraction: 0.7,
-            enableInfiniteScroll: false,
-            aspectRatio: _getAspectRatio(context),
-            enlargeCenterPage: true,
-            scrollDirection: Axis.vertical,
-            pageSnapping: true,
+        child: LayoutBuilder(
+          builder: (context, constraints) => CarouselSlider(
+            carouselController: _carouselController,
+            options: CarouselOptions(
+              viewportFraction: 0.7,
+              enableInfiniteScroll: false,
+              aspectRatio: _getAspectRatio(constraints),
+              enlargeCenterPage: true,
+              scrollDirection: Axis.vertical,
+              pageSnapping: true,
+            ),
+            items: _slides,
           ),
-          items: _slides,
         ),
       ),
     );

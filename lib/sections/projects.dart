@@ -49,7 +49,7 @@ class SectionProjects extends StatelessWidget {
               style: Theme.of(context)
                   .textTheme
                   .bodyText1
-                  .copyWith(color: Color(0xFF00FFC2)),
+                  .copyWith(color: Theme.of(context).accentColor),
             ),
           ),
         ],
