@@ -14,9 +14,6 @@ class _SectionProjectsState extends State<SectionProjects> {
 
   final CarouselController _carouselController = CarouselController();
 
-  void _stopAutoPlayProjects(CarouselController controller) =>
-      controller.stopAutoPlay();
-
   double _getViewPortFraction(BuildContext context) {
     if (LayoutUtils.isMobileLayout(context)) return 1;
     if (LayoutUtils.isLargeLayout(context)) return 0.4;
