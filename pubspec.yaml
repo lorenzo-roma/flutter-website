@@ -51,6 +51,7 @@ flutter:
   assets:
     - assets/images/polimi_logo.png
     - assets/images/tutored_logo.png
+    - .env
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

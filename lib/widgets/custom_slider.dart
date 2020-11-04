@@ -3,10 +3,17 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/gestures.dart';
 
-class CustomSlider extends StatelessWidget {
+class CustomSlider extends StatefulWidget {
   final List<Widget> _slides;
-  final CarouselController _carouselController = CarouselController();
+
   CustomSlider({@required List<Widget> slides}) : this._slides = slides;
+
+  @override
+  _CustomSliderState createState() => _CustomSliderState();
+}
+
+class _CustomSliderState extends State<CustomSlider> {
+  final CarouselController _carouselController = CarouselController();
 
   double _getAspectRatio(BoxConstraints constraints) {
     return constraints.maxWidth / constraints.maxHeight;
@@ -28,7 +35,7 @@ class CustomSlider extends StatelessWidget {
               scrollDirection: Axis.vertical,
               pageSnapping: true,
             ),
-            items: _slides,
+            items: widget._slides,
           ),
         ),
       ),
