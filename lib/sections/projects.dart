@@ -1,10 +1,17 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_website/layout_utils.dart';
 import 'package:flutter_website/widgets/project_card.dart';
 import 'package:flutter_website/widgets/typewriter_text.dart';
 
 class SectionProjects extends StatelessWidget {
-  const SectionProjects();
+  final _projects = [1, 2, 3];
+
+  double _getViewPortFraction(BuildContext context) {
+    if (LayoutUtils.isMobileLayout(context)) return 1;
+    if (LayoutUtils.isLargeLayout(context)) return 0.4;
+    return 0.6;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,15 +35,13 @@ class SectionProjects extends StatelessWidget {
           Expanded(
             child: LayoutBuilder(
               builder: (context, constraints) => CarouselSlider(
-                items: [
-                  ProjectCard(),
-                  ProjectCard(),
-                  ProjectCard(),
-                ],
+                items: _projects.map((project) => ProjectCard()).toList(),
                 options: CarouselOptions(
+                  enlargeCenterPage: true,
+                  enlargeStrategy: CenterPageEnlargeStrategy.height,
                   height: constraints.maxHeight,
-                  autoPlayInterval: Duration(seconds: 3),
-                  viewportFraction: 1,
+                  autoPlayInterval: Duration(seconds: 2),
+                  viewportFraction: _getViewPortFraction(context),
                   autoPlay: true,
                 ),
               ),

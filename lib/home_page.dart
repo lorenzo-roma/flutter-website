@@ -14,17 +14,27 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
-  AnimationController _animationController;
-  Animation<double> animation;
+  AnimationController _blackAnimationController;
+  AnimationController _contentAnimationController;
+  Animation<double> _blackAnimation;
+  Animation<double> _contentAnimation;
 
   @override
   void initState() {
     super.initState();
-    _animationController = AnimationController(
+    _blackAnimationController = AnimationController(
         duration: const Duration(milliseconds: 1000), vsync: this);
-    animation =
-        CurvedAnimation(parent: _animationController, curve: Curves.easeIn);
-    _animationController.forward();
+    _contentAnimationController = AnimationController(
+        duration: const Duration(milliseconds: 500), vsync: this);
+    _contentAnimation = CurvedAnimation(
+        parent: _contentAnimationController, curve: Curves.easeIn);
+    _blackAnimation =
+        CurvedAnimation(parent: _blackAnimationController, curve: Curves.easeIn)
+          ..addStatusListener((status) {
+            if (status == AnimationStatus.completed)
+              _contentAnimationController.forward();
+          });
+    _blackAnimationController.forward();
   }
 
   double _getGlobalPadding(BuildContext context) {
@@ -39,18 +49,21 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
       padding: EdgeInsets.symmetric(
           horizontal: _getGlobalPadding(context), vertical: 0),
       child: FadeTransition(
-        opacity: animation,
+        opacity: _blackAnimation,
         child: Container(
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
           color: Colors.black,
           child: Center(
-              child: CustomSlider(
-            slides: const [
-              CarouselSection(child: SectionNameDescription()),
-              CarouselSection(child: SectionCurrently()),
-              CarouselSection(child: SectionProjects())
-            ],
+              child: FadeTransition(
+            opacity: _contentAnimation,
+            child: CustomSlider(
+              slides: [
+                CarouselSection(child: SectionNameDescription()),
+                CarouselSection(child: SectionCurrently()),
+                CarouselSection(child: SectionProjects())
+              ],
+            ),
           )),
         ),
       ),

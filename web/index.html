@@ -33,9 +33,20 @@
     background-color: black;
     color: black;
   }
+
+  img {
+    width:60%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    display:block;
+    transform: translate(-50%, -50%);
+    max-width: 300px;
+}
   </style>
 </head>
 <body>
+  <img src="./web/assets/img/loading.gif"> 
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('flutter-first-frame', function () {
