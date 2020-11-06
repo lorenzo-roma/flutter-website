@@ -34,7 +34,7 @@
     color: black;
   }
 
-  img {
+  #splashScreen {
     width:60%;
     position: absolute;
     left: 50%;
@@ -46,7 +46,7 @@
   </style>
 </head>
 <body>
-  <img src="./web/assets/img/loading.gif"> 
+  <img src="./web/assets/img/loading.gif" id="splashScreen"> 
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('flutter-first-frame', function () {
