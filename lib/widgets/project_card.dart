@@ -1,3 +1,4 @@
+import 'dart:isolate';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
@@ -47,6 +48,15 @@ class _ProjectCardState extends State<ProjectCard>
 
   double _getTextHeight(double maxHeight) {
     return (_expandAnimation.value / 100 * maxHeight);
+  }
+
+  double _getTextMaxHeight(BuildContext context, double maxHeight) {
+    return (_maxPanelPerc / 100 * maxHeight) -
+        _getBaseHeight(context, maxHeight);
+  }
+
+  double _getTextMinHeight(BuildContext context, double maxHeight) {
+    return (_minPanelPerc / 100 * maxHeight) - maxHeight * _basePerc / 100;
   }
 
   double _getBaseHeight(BuildContext context, double maxHeight) {
@@ -112,7 +122,31 @@ class _ProjectCardState extends State<ProjectCard>
                       clipBehavior: Clip.antiAlias,
                       child: BackdropFilter(
                         filter: ImageFilter.blur(sigmaX: 20.0, sigmaY: 20.0),
-                        child: Container(),
+                        child: SingleChildScrollView(
+                          physics: NeverScrollableScrollPhysics(),
+                          child: Container(
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 16.0),
+                            height: _getTextMaxHeight(
+                                context, constraints.maxHeight),
+                            width: constraints.maxWidth,
+                            child: Column(children: [
+                              Container(
+                                height: _getTextMinHeight(
+                                    context, constraints.maxHeight),
+                                child: Center(
+                                  child: Text(
+                                    'Titolo',
+                                    style:
+                                        Theme.of(context).textTheme.headline2,
+                                  ),
+                                ),
+                              ),
+                              Text('Descrizione',
+                                  style: Theme.of(context).textTheme.bodyText1),
+                            ]),
+                          ),
+                        ),
                       ),
                     ),
                   ),

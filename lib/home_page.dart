@@ -37,6 +37,13 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     _blackAnimationController.forward();
   }
 
+  @override
+  void dispose() {
+    super.dispose();
+    _blackAnimationController.dispose();
+    _contentAnimationController.dispose();
+  }
+
   double _getGlobalPadding(BuildContext context) {
     final w = MediaQuery.of(context).size.width;
     final padding = pow(w / 100, 4) / 200;
