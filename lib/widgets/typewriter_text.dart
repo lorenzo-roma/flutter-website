@@ -11,9 +11,9 @@ class TypeWriterText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TypewriterAnimatedTextKit(
-      speed: Duration(milliseconds: 80),
+      speed: Duration(milliseconds: 100),
       repeatForever: true,
-      pause: Duration(milliseconds: 2000),
+      pause: Duration(milliseconds: 5000),
       text: _text,
       textStyle: _textStyle,
     );

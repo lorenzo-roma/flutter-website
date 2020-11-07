@@ -53,7 +53,7 @@ class _SectionProjectsState extends State<SectionProjects> {
                   enlargeCenterPage: true,
                   enlargeStrategy: CenterPageEnlargeStrategy.height,
                   height: constraints.maxHeight,
-                  autoPlayInterval: Duration(seconds: 2),
+                  autoPlayInterval: Duration(seconds: 4),
                   viewportFraction: _getViewPortFraction(context),
                   autoPlay: true,
                 ),
