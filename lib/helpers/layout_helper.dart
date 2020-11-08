@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class LayoutUtils {
+class LayoutHelper {
   static double getWindowWidth(BuildContext context) {
     return MediaQuery.of(context).size.width;
   }

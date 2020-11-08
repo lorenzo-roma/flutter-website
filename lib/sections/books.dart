@@ -1,25 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:flutter_website/providers/projects_provider.dart';
+import 'package:flutter_website/providers/books_provider.dart';
+import 'package:flutter_website/widgets/book_card.dart';
 import 'package:provider/provider.dart';
-
 import 'package:flutter_website/helpers/layout_helper.dart';
-import 'package:flutter_website/widgets/project_card/project_card.dart';
-import 'package:flutter_website/widgets/project_card/project_links.dart';
 import 'package:flutter_website/widgets/typewriter_text.dart';
 
 double _getCardWidth(BuildContext context, double maxWidth) {
-  if (LayoutHelper.isMobileLayout(context)) return maxWidth;
-  if (LayoutHelper.isLargeLayout(context)) return maxWidth / 2.5;
-  return maxWidth / 2;
+  if (LayoutHelper.isMobileLayout(context)) return maxWidth / 2;
+  if (LayoutHelper.isLargeLayout(context)) return maxWidth / 5;
+  return maxWidth / 4;
 }
 
-class SectionProjects extends StatefulWidget {
+class SectionBooks extends StatefulWidget {
   @override
-  _SectionProjectsState createState() => _SectionProjectsState();
+  _SectionBooksState createState() => _SectionBooksState();
 }
 
-class _SectionProjectsState extends State<SectionProjects> {
+class _SectionBooksState extends State<SectionBooks> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -27,15 +25,36 @@ class _SectionProjectsState extends State<SectionProjects> {
       child: Column(
         children: [
           _SectionTitle(),
-          _ProjectList(),
+          _BooksList(),
+          _Email(),
         ],
       ),
     );
   }
 }
 
-class _ProjectList extends StatelessWidget {
-  const _ProjectList({
+class _Email extends StatelessWidget {
+  const _Email({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(top: 16.0),
+      child: Text(
+        "r.lorenzo1810@gmail.com",
+        style: Theme.of(context)
+            .textTheme
+            .bodyText1
+            .copyWith(color: Theme.of(context).accentColor),
+      ),
+    );
+  }
+}
+
+class _BooksList extends StatelessWidget {
+  const _BooksList({
     Key key,
   }) : super(key: key);
 
@@ -50,17 +69,14 @@ class _ProjectList extends StatelessWidget {
             scrollDirection: Axis.horizontal,
             physics: BouncingScrollPhysics(),
             children: context
-                .watch<ProjectsProvider>()
-                .projects
-                .map((p) => ProjectCard(
-                    height: constraints.maxHeight,
-                    width: _getCardWidth(context, constraints.maxWidth),
-                    title: p.title,
-                    description: p.description,
-                    date: p.date,
-                    imgUrl: p.imgUrl,
-                    barWidget: ProjectLinks(
-                        youtubeLink: p.youtubeLink, gitHubLink: p.gitHubLink)))
+                .watch<BooksProvider>()
+                .books
+                .map((b) => BookCard(
+                      height: constraints.maxHeight,
+                      width: _getCardWidth(context, constraints.maxWidth),
+                      title: b.title,
+                      imgUrl: b.imgUrl,
+                    ))
                 .toList(),
           ),
         ),
@@ -81,7 +97,7 @@ class _SectionTitle extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.only(bottom: 8.0),
         child: TypeWriterText(
-          text: ["Some of my projects", "I even added their video on YT!"],
+          text: ["I love reading", "Here are some books I read"],
           style: Theme.of(context).textTheme.headline2,
         ),
       ),

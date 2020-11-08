@@ -27,6 +27,13 @@ dependencies:
   carousel_slider: ^2.3.1  
   animated_text_kit: ^2.5.2
   url_launcher: ^5.7.10
+  intl: ^0.16.1
+  provider: ^4.3.2+2
+  firebase_core: "0.5.2"
+  cloud_firestore: ^0.14.3
+
+
+
 
 
 
@@ -55,8 +62,6 @@ flutter:
     - assets/images/tutored_logo.png
     - assets/images/youtube_logo.png
     - assets/images/github_logo.png
-
-    - .env
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

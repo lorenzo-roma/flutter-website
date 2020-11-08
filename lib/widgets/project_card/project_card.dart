@@ -1,9 +1,9 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_website/widgets/project_card/project_links.dart';
+import 'package:intl/intl.dart';
 
-import '../../layout_utils.dart';
+import '../../helpers/layout_helper.dart';
 
 class ProjectCard extends StatefulWidget {
   static Function _nullFunction() {}
@@ -13,6 +13,7 @@ class ProjectCard extends StatefulWidget {
   final double _width;
   final String _title;
   final String _description;
+  final DateTime _date;
   final String _imgUrl;
   final Widget _barWidget;
 
@@ -24,12 +25,14 @@ class ProjectCard extends StatefulWidget {
       @required double width,
       @required String title,
       @required String description,
+      @required DateTime date,
       @required String imgUrl})
       : this._expandingCallback = expandFunction,
         this._reducingCallback = reduceFunction,
         this._barWidget = barWidget,
         this._title = title,
         this._description = description,
+        this._date = date,
         this._imgUrl = imgUrl,
         this._height = height,
         this._width = width;
@@ -62,8 +65,8 @@ class _ProjectCardState extends State<ProjectCard>
   }
 
   double _getBorderRadius(BuildContext context) {
-    if (LayoutUtils.isMobileLayout(context)) return 25;
-    if (LayoutUtils.isLargeLayout(context)) return 50;
+    if (LayoutHelper.isMobileLayout(context)) return 25;
+    if (LayoutHelper.isLargeLayout(context)) return 50;
     return 40;
   }
 
@@ -151,20 +154,33 @@ class _ProjectCardState extends State<ProjectCard>
                                   const EdgeInsets.symmetric(horizontal: 16.0),
                               height: _getTextMaxHeight(context),
                               width: constraints.maxWidth,
-                              child: Column(children: [
-                                Container(
-                                  height: _getTextMinHeight(context),
-                                  child: Center(
-                                    child: Text(
-                                      widget._title,
-                                      style:
-                                          Theme.of(context).textTheme.headline2,
+                              child: Stack(children: [
+                                Column(children: [
+                                  Container(
+                                    height: _getTextMinHeight(context),
+                                    child: Center(
+                                      child: Text(
+                                        widget._title,
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .headline2,
+                                      ),
                                     ),
                                   ),
-                                ),
-                                Text(widget._description,
-                                    style:
-                                        Theme.of(context).textTheme.bodyText1),
+                                  Text(widget._description,
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodyText1),
+                                ]),
+                                Positioned(
+                                    top: 10,
+                                    left: 0,
+                                    child: Text(
+                                      DateFormat('dd/MM/yyyy')
+                                          .format(widget._date),
+                                      style:
+                                          Theme.of(context).textTheme.bodyText1,
+                                    )),
                               ]),
                             ),
                           ),

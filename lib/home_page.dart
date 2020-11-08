@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/animation.dart';
+import 'package:flutter_website/sections/books.dart';
 import 'package:flutter_website/sections/currently.dart';
 import 'package:flutter_website/sections/name_description.dart';
 import 'package:flutter_website/sections/projects.dart';
@@ -68,7 +69,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
               slides: [
                 CarouselSection(child: SectionNameDescription()),
                 CarouselSection(child: SectionCurrently()),
-                CarouselSection(child: SectionProjects())
+                CarouselSection(child: SectionProjects()),
+                CarouselSection(child: SectionBooks())
               ],
             ),
           )),

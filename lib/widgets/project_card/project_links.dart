@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
-import '../../layout_utils.dart';
+import '../../helpers/layout_helper.dart';
 
 EdgeInsets _getIconPadding(BuildContext context) {
-  if (LayoutUtils.isMobileLayout(context)) return EdgeInsets.all(8);
-  if (LayoutUtils.isLargeLayout(context)) return EdgeInsets.all(20);
+  if (LayoutHelper.isMobileLayout(context)) return EdgeInsets.all(8);
+  if (LayoutHelper.isLargeLayout(context)) return EdgeInsets.all(20);
   return EdgeInsets.all(16);
 }
 

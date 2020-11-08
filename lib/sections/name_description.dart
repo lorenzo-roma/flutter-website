@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_website/layout_utils.dart';
+import 'package:flutter_website/helpers/layout_helper.dart';
 
 class SectionNameDescription extends StatelessWidget {
   const SectionNameDescription();
 
   double _getSpreadRadius(BuildContext context) {
-    if (LayoutUtils.isMobileLayout(context)) return -35;
-    if (LayoutUtils.isLargeLayout(context)) return -30;
+    if (LayoutHelper.isMobileLayout(context)) return -35;
+    if (LayoutHelper.isLargeLayout(context)) return -30;
     return -50;
   }
 
@@ -23,19 +23,19 @@ class SectionNameDescription extends StatelessWidget {
                 fit: BoxFit.cover,
                 child: Text(
                   "Lorenzo\nRomagnoni",
-                  textAlign: LayoutUtils.isMobileLayout(context)
+                  textAlign: LayoutHelper.isMobileLayout(context)
                       ? TextAlign.center
                       : TextAlign.left,
                   style: Theme.of(context).textTheme.headline1,
                 ),
               ),
               Padding(
-                padding: EdgeInsets.only(left: 0, top: 8),
+                padding: EdgeInsets.only(left: 0, top: 8, bottom: 8),
                 child: FittedBox(
                   fit: BoxFit.cover,
                   child: Text(
                     "> Developer",
-                    textAlign: LayoutUtils.isMobileLayout(context)
+                    textAlign: LayoutHelper.isMobileLayout(context)
                         ? TextAlign.center
                         : TextAlign.left,
                     style: Theme.of(context).textTheme.caption,
@@ -79,7 +79,7 @@ class SectionNameDescription extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LayoutUtils.isMobileLayout(context)
+    return LayoutHelper.isMobileLayout(context)
         ? Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: _getFlexChildren(context))
