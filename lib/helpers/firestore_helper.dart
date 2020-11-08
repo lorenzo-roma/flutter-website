@@ -31,7 +31,7 @@ class _ProjectSchema {
   static const DATE = 'date';
   static const IMAGE_URL = 'img_url';
   static const YOUTUBE_URL = 'youtube_url';
-  static const GITHUB_URL = 'titgithub_urlle';
+  static const GITHUB_URL = 'github_url';
 }
 
 class _BookSchema {
