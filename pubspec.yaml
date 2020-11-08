@@ -26,6 +26,8 @@ dependencies:
 
   carousel_slider: ^2.3.1  
   animated_text_kit: ^2.5.2
+  url_launcher: ^5.7.10
+
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -51,6 +53,9 @@ flutter:
   assets:
     - assets/images/polimi_logo.png
     - assets/images/tutored_logo.png
+    - assets/images/youtube_logo.png
+    - assets/images/github_logo.png
+
     - .env
   #   - images/a_dot_ham.jpeg
 
