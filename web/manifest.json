@@ -1,11 +1,11 @@
 {
-    "name": "flutter_website",
+    "name": "Lorenzo Romagnoni",
     "short_name": "flutter_website",
     "start_url": ".",
-    "display": "standalone",
-    "background_color": "#0175C2",
-    "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "display": "fullscreen",
+    "background_color": "#00FFC2",
+    "theme_color": "#00FFC2",
+    "description": "Lorenzo Romagnoni personal website.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

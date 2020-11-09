@@ -44,8 +44,8 @@ class ProjectCard extends StatefulWidget {
 class _ProjectCardState extends State<ProjectCard>
     with SingleTickerProviderStateMixin {
   static const _expandVelocity = 600;
-  static const _minPanelPerc = 30.0;
-  static const _maxPanelPerc = 70.0;
+  static const _minPanelPerc = 25.0;
+  static const _maxPanelPerc = 65.0;
   static const _basePerc = 10;
   AnimationController _expandAnimationController;
   Animation<double> _expandAnimation;

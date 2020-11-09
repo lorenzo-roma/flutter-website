@@ -42,7 +42,7 @@ class _YoutubeIcon extends StatelessWidget {
       padding: _getIconPadding(context),
       child: GestureDetector(
           onTap: () => _launchUrl(youtubeLink),
-          child: Image.asset('images/youtube_logo.png')),
+          child: Image.asset('assets/images/youtube_logo.png')),
     );
   }
 }
@@ -57,7 +57,7 @@ class _GitHubIcon extends StatelessWidget {
       padding: _getIconPadding(context),
       child: GestureDetector(
           onTap: () => _launchUrl(gitHubLink),
-          child: Image.asset('images/github_logo.png')),
+          child: Image.asset('assets/images/github_logo.png')),
     );
   }
 }
