@@ -26,15 +26,15 @@ class _SectionBooksState extends State<SectionBooks> {
         children: [
           _SectionTitle(),
           _BooksList(),
-          _Email(),
+          _Contacts(),
         ],
       ),
     );
   }
 }
 
-class _Email extends StatelessWidget {
-  const _Email({
+class _Contacts extends StatelessWidget {
+  const _Contacts({
     Key key,
   }) : super(key: key);
 
@@ -42,12 +42,22 @@ class _Email extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(top: 16.0),
-      child: Text(
-        "r.lorenzo1810@gmail.com",
-        style: Theme.of(context)
-            .textTheme
-            .bodyText1
-            .copyWith(color: Theme.of(context).accentColor),
+      child: Column(
+        children: [
+          Text(
+            "r.lorenzo1810@gmail.com",
+            style: Theme.of(context)
+                .textTheme
+                .bodyText1
+                .copyWith(color: Theme.of(context).accentColor),
+          ),
+          Row(
+            children: [
+              Image.asset('assets/images/github_logo_white.png'),
+              Image.asset('assets/images/medium_logo.png'),
+            ],
+          )
+        ],
       ),
     );
   }
@@ -101,7 +111,7 @@ class _SectionTitle extends StatelessWidget {
     );
   }
 
-  TypeWriterText _getTitle(BuildContext context) {
+  Widget _getTitle(BuildContext context) {
     return LayoutHelper.isMobileLayout(context)
         ? Text(
             "I love reading, here are some books I read",

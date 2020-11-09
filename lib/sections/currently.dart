@@ -39,7 +39,7 @@ class _SectionTitle extends StatelessWidget {
     );
   }
 
-  TypeWriterText _getTitle(BuildContext context) {
+  Widget _getTitle(BuildContext context) {
     return LayoutHelper.isMobileLayout(context)
         ? Text("Currently I am", style: Theme.of(context).textTheme.headline2)
         : TypeWriterText(
