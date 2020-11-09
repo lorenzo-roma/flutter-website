@@ -96,11 +96,20 @@ class _SectionTitle extends StatelessWidget {
       fit: BoxFit.cover,
       child: Padding(
         padding: const EdgeInsets.only(bottom: 8.0),
-        child: TypeWriterText(
-          text: ["I love reading", "Here are some books I read"],
-          style: Theme.of(context).textTheme.headline2,
-        ),
+        child: _getTitle(context),
       ),
     );
+  }
+
+  TypeWriterText _getTitle(BuildContext context) {
+    return LayoutHelper.isMobileLayout(context)
+        ? Text(
+            "I love reading, here are some books I read",
+            style: Theme.of(context).textTheme.headline2,
+          )
+        : TypeWriterText(
+            text: ["I love reading", "Here are some books I read"],
+            style: Theme.of(context).textTheme.headline2,
+          );
   }
 }

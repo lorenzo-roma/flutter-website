@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_website/helpers/layout_helper.dart';
 import 'package:flutter_website/widgets/typewriter_text.dart';
 
 class SectionCurrently extends StatelessWidget {
@@ -33,16 +34,22 @@ class _SectionTitle extends StatelessWidget {
       padding: const EdgeInsets.only(bottom: 32.0),
       child: FittedBox(
         fit: BoxFit.cover,
-        child: TypeWriterText(
-          text: [
-            "Currently I am",
-            "Well, actually I always do a lot of things...",
-            "Ok let's say mainly I am: "
-          ],
-          style: Theme.of(context).textTheme.headline2,
-        ),
+        child: _getTitle(context),
       ),
     );
+  }
+
+  TypeWriterText _getTitle(BuildContext context) {
+    return LayoutHelper.isMobileLayout(context)
+        ? Text("Currently I am", style: Theme.of(context).textTheme.headline2)
+        : TypeWriterText(
+            text: [
+              "Currently I am",
+              "Well, actually I always do a lot of things...",
+              "Ok let's say mainly I am: "
+            ],
+            style: Theme.of(context).textTheme.headline2,
+          );
   }
 }
 

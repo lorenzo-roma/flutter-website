@@ -80,11 +80,18 @@ class _SectionTitle extends StatelessWidget {
       fit: BoxFit.cover,
       child: Padding(
         padding: const EdgeInsets.only(bottom: 8.0),
-        child: TypeWriterText(
-          text: ["Some of my projects", "I even added their video on YT!"],
-          style: Theme.of(context).textTheme.headline2,
-        ),
+        child: _getTitle(context),
       ),
     );
+  }
+
+  Widget _getTitle(BuildContext context) {
+    return (LayoutHelper.isMobileLayout(context))
+        ? Text("Some of my projects",
+            style: Theme.of(context).textTheme.headline2)
+        : TypeWriterText(
+            text: ["Some of my projects", "I even added their video on YT!"],
+            style: Theme.of(context).textTheme.headline2,
+          );
   }
 }

@@ -179,7 +179,14 @@ class _ProjectCardState extends State<ProjectCard>
                                       DateFormat('dd/MM/yyyy')
                                           .format(widget._date),
                                       style:
-                                          Theme.of(context).textTheme.bodyText1,
+                                          LayoutHelper.isMobileLayout(context)
+                                              ? Theme.of(context)
+                                                  .textTheme
+                                                  .bodyText1
+                                                  .copyWith(fontSize: 12)
+                                              : Theme.of(context)
+                                                  .textTheme
+                                                  .bodyText1,
                                     )),
                               ]),
                             ),

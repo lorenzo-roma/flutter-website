@@ -26,8 +26,9 @@ class MyApp extends StatelessWidget {
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
             return MaterialApp(
-              title: 'Flutter Demo',
+              title: 'Lorenzo Romagnoni',
               theme: ThemeData(
+                primaryColor: Color(0xFF00FFC2),
                 accentColor: Color(0xFF00FFC2),
                 textTheme: TextTheme(
                   headline1: TextStyle(
