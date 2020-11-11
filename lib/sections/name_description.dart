@@ -63,7 +63,7 @@ class SectionNameDescription extends StatelessWidget {
                 child: FittedBox(
                   fit: BoxFit.cover,
                   child: Text(
-                    "Lorem ipsum dolor sit amet, consectetur\nadipiscing elit. Nulla sed neque rutrum,\n pretium nisl eget, gravida neque.\n Aliquam in dignissim quam, at ultricies\n tellus. Nulla sed lectus iaculis, aliquam \nneque a, blandit nibh. Aliquam varius \norci id ligula rhoncus semper. Vivamus \n,nec lectus vitae dui dapibus cursus eget\n sed mauris. Orci varius natoque\n penatibus et magnis dis parturient \nmontes, nascetur ridiculus mus. Sed id \nerat lectus. Aenean ornare metus diam. \nPellentesque eu odio volutpat, vulputate\n velit nec, malesuada lorem.",
+                    "Determined and enterprising developer\n from Milan, Italy! 🟩⬜🟥\nTech lover👨‍💻 and extremely curious,\n I always want to learn more from disparate\n fields: web and mobile development,\n AI🤖,finance📈, sociology,\n psychology🧠 and more.\nFrequently thinking about my \nnext journey✈️, next projects and goals🏆.\nI love reading📘, I think it\nis the most powerful way to learn from\nextraordinary people, from all over\nthe world (space🌍) and history (time⌛)!.\n",
                     style: Theme.of(context).textTheme.bodyText1,
                     textAlign: TextAlign.center,
                     overflow: TextOverflow.fade,
