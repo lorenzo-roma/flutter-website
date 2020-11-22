@@ -10,7 +10,10 @@ class ProjectsProvider with ChangeNotifier {
 
   List<Project> _projects = [];
 
-  List<Project> get projects => _projects;
+  List<Project> get projects {
+    _projects.sort((a, b) => a.sortIndex - b.sortIndex);
+    return _projects;
+  }
 
   void _fecthProjects() async {
     QuerySnapshot _querySnapshot = await FirebaseFirestore.instance

@@ -20,7 +20,9 @@ class BookCard extends StatelessWidget {
       child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 8),
-          child: Image.network(imgUrl),
+          child: FadeInImage.assetNetwork(
+              placeholder: 'assets/images/image_placeholder.jpg',
+              image: imgUrl),
         ),
         Text(title, style: Theme.of(context).textTheme.bodyText1),
       ]),

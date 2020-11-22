@@ -129,14 +129,13 @@ class _ProjectCardState extends State<ProjectCard>
               builder: (context, constraints) => Stack(
                 fit: StackFit.expand,
                 children: [
-                  Container(
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                          image: NetworkImage(widget._imgUrl),
-                          fit: BoxFit.cover),
-                      borderRadius: BorderRadius.all(
-                          Radius.circular(_getBorderRadius(context))),
-                    ),
+                  ClipRRect(
+                    borderRadius: BorderRadius.all(
+                        Radius.circular(_getBorderRadius(context))),
+                    child: FadeInImage.assetNetwork(
+                        fit: BoxFit.cover,
+                        placeholder: 'assets/images/image_placeholder.jpg',
+                        image: widget._imgUrl),
                   ),
                   Positioned(
                     bottom: _getBorderRadius(context) - 1,

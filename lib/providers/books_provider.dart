@@ -10,7 +10,10 @@ class BooksProvider with ChangeNotifier {
 
   List<Book> _books = [];
 
-  List<Book> get books => _books;
+  List<Book> get books {
+    _books.sort((a, b) => a.sortIndex - b.sortIndex);
+    return _books;
+  }
 
   void _fetchBooks() async {
     QuerySnapshot _querySnapshot = await FirebaseFirestore.instance

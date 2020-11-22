@@ -1,8 +1,31 @@
 import 'package:flutter/material.dart';
 
 class Book {
-  final String title;
-  final String imgUrl;
+  String id;
+  String title;
+  String imgUrl;
+  int sortIndex;
 
-  Book({@required this.title, @required this.imgUrl});
+  Book(
+      {@required this.id,
+      @required this.title,
+      @required this.imgUrl,
+      @required this.sortIndex});
+
+  static Book fromMap(Map map) {
+    return Book(
+        id: map["id"],
+        title: map["title"],
+        imgUrl: map["img_url"],
+        sortIndex: map["sort_index"]);
+  }
+
+  static Map toMap(Book book) {
+    return {
+      "id": book.id,
+      "title": book.title,
+      "img_url": book.imgUrl,
+      "sort_index": book.sortIndex
+    };
+  }
 }
