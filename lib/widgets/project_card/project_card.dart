@@ -153,40 +153,38 @@ class _ProjectCardState extends State<ProjectCard>
                                   const EdgeInsets.symmetric(horizontal: 16.0),
                               height: _getTextMaxHeight(context),
                               width: constraints.maxWidth,
-                              child: Stack(children: [
-                                Column(children: [
-                                  Container(
-                                    height: _getTextMinHeight(context),
-                                    child: Center(
-                                      child: Text(
-                                        widget._title,
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .headline2,
+                              child: Column(children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 8.0),
+                                  child: Row(
+                                    children: [
+                                      Text(
+                                        DateFormat('dd/MM/yyyy')
+                                            .format(widget._date),
+                                        style:
+                                            LayoutHelper.isMobileLayout(context)
+                                                ? Theme.of(context)
+                                                    .textTheme
+                                                    .bodyText1
+                                                    .copyWith(fontSize: 12)
+                                                : Theme.of(context)
+                                                    .textTheme
+                                                    .bodyText1,
                                       ),
-                                    ),
+                                    ],
                                   ),
-                                  Text(widget._description,
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .bodyText1),
-                                ]),
-                                Positioned(
-                                    top: 10,
-                                    left: 0,
-                                    child: Text(
-                                      DateFormat('dd/MM/yyyy')
-                                          .format(widget._date),
-                                      style:
-                                          LayoutHelper.isMobileLayout(context)
-                                              ? Theme.of(context)
-                                                  .textTheme
-                                                  .bodyText1
-                                                  .copyWith(fontSize: 12)
-                                              : Theme.of(context)
-                                                  .textTheme
-                                                  .bodyText1,
-                                    )),
+                                ),
+                                Container(
+                                  height: _getTextMinHeight(context),
+                                  child: Text(
+                                    widget._title,
+                                    style:
+                                        Theme.of(context).textTheme.headline2,
+                                  ),
+                                ),
+                                Text(widget._description,
+                                    style:
+                                        Theme.of(context).textTheme.bodyText1),
                               ]),
                             ),
                           ),

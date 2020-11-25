@@ -9,6 +9,8 @@ import 'package:flutter_website/sections/projects.dart';
 import 'package:flutter_website/widgets/custom_slider.dart';
 import 'package:flutter_website/widgets/carousel_section.dart';
 
+import 'helpers/layout_helper.dart';
+
 class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
@@ -51,6 +53,31 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     return padding > 300 ? 300 : padding;
   }
 
+  Widget _getLayout(BuildContext context) {
+    if (LayoutHelper.isMobileLayout(context)) {
+      return ListView(
+        physics: BouncingScrollPhysics(),
+        children: [
+          SizedBox(height: 64),
+          CarouselSection(child: SectionNameDescription()),
+          CarouselSection(child: SectionCurrently()),
+          CarouselSection(child: SectionProjects()),
+          CarouselSection(child: SectionBooks()),
+          SizedBox(height: 64),
+        ],
+      );
+    } else {
+      return CustomSlider(
+        slides: [
+          CarouselSection(child: SectionNameDescription()),
+          CarouselSection(child: SectionCurrently()),
+          CarouselSection(child: SectionProjects()),
+          CarouselSection(child: SectionBooks())
+        ],
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -65,14 +92,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
           child: Center(
               child: FadeTransition(
             opacity: _contentAnimation,
-            child: CustomSlider(
-              slides: [
-                CarouselSection(child: SectionNameDescription()),
-                CarouselSection(child: SectionCurrently()),
-                CarouselSection(child: SectionProjects()),
-                CarouselSection(child: SectionBooks())
-              ],
-            ),
+            child: _getLayout(context),
           )),
         ),
       ),

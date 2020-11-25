@@ -24,7 +24,9 @@ class BookCard extends StatelessWidget {
               placeholder: 'assets/images/image_placeholder.jpg',
               image: imgUrl),
         ),
-        Text(title, style: Theme.of(context).textTheme.bodyText1),
+        Text(title,
+            style: Theme.of(context).textTheme.bodyText1,
+            textAlign: TextAlign.center),
       ]),
     );
   }
