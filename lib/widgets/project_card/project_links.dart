@@ -21,8 +21,12 @@ class ProjectLinks extends StatelessWidget {
   final String gitHubLink;
   final List<Widget> _iconList = [];
   ProjectLinks({this.youtubeLink, this.gitHubLink}) {
-    if (this.youtubeLink != null) _iconList.add(_YoutubeIcon(youtubeLink));
-    if (this.gitHubLink != null) _iconList.add(_GitHubIcon(gitHubLink));
+    if (_isValidUrl(this.youtubeLink)) _iconList.add(_YoutubeIcon(youtubeLink));
+    if (_isValidUrl(this.gitHubLink)) _iconList.add(_GitHubIcon(gitHubLink));
+  }
+
+  bool _isValidUrl(url) {
+    return url != null && url != '';
   }
 
   @override
