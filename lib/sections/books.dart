@@ -64,7 +64,7 @@ class _Contacts extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 16.0),
           child: Text(
-            "r.lorenzo1810@gmail.com",
+            "me@lorenzoromagnoni.it",
             style: Theme.of(context)
                 .textTheme
                 .bodyText1
